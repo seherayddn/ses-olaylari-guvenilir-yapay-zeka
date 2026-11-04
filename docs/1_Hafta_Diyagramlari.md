@@ -1,19 +1,26 @@
 ### 1. Kullanım Senaryosu (Use Case) Diyagramı
 ```mermaid
-usecaseDiagram
-    actor Kullanıcı
-    actor "Yetkili Araştırmacı" as Araştırmacı
+flowchart LR
+    %% Aktörler
+    User((Kullanıcı))
+    Admin((Yetkili Araştırmacı))
 
-    Kullanıcı --> (Ses Dosyası Yükleme)
-    Kullanıcı --> (Analiz Sürecini Başlatma)
-    Kullanıcı --> (Zaman Çizelgesini İnceleme)
-    Kullanıcı --> (Model İddialarını ve Kanıtları İnceleme)
+    %% İşlemler
+    UC1([Ses Dosyası Yükleme])
+    UC2([Analiz Sürecini Başlatma])
+    UC3([Zaman Çizelgesini İnceleme])
+    UC4([Model İddialarını ve Kanıtları İnceleme])
+    UC5([Deney Sonuçlarını Listeleme])
+    UC6([Model Karşılaştırmalarını İnceleme])
+
+    %% Bağlantılar
+    User --- UC1
+    User --- UC2
+    User --- UC3
+    User --- UC4
     
-    Araştırmacı --> (Deney Sonuçlarını Listeleme)
-    Araştırmacı --> (Model Karşılaştırmalarını İnceleme)
-
-    (Analiz Sürecini Başlatma) ..> (Dosya Format Kontrolü) : <<include>>
-    (Model İddialarını ve Kanıtları İnceleme) ..> (Belirsizlik Durumunda Uyarı Verme) : <<extend>>
+    Admin --- UC5
+    Admin --- UC6
 ```
 
 ### 2. Sistem Mimarisi Diyagramı
